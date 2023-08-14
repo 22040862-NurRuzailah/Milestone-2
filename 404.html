@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNABLE TO LOAD!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=fantasy=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('error.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center; 
+            height: 78vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; 
+        }
+        .error-container {
+            text-align: center;
+            margin-bottom: 50px; 
+            font-family: 'fantasy', sans-serif; 
+            color: yellow;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 15px 30px; 
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-family: 'fantasy', sans-serif; /* Apply the imported font */
+        }
+        .back-button:hover {
+            background-color: red; 
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <p><b>The page you are looking for might have been removed, or temporarily unavailable.</b></p>
+        <a class="back-button" href="loggedin.html">Back to Previous Page</a>
+    </div>
+</body>
+</html>

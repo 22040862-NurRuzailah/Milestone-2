@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <style>
+        .body {
+            background-image: url(login.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        .welcome-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            background: #f2f2f2;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .welcome-page .logout-btn {
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: .1em;
+            outline: 0;
+            background: #17a589;
+            border: 0;
+            border-radius: 30px;
+            padding: 15px 30px;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .welcome-page .logout-btn:hover,
+        .welcome-page .logout-btn:focus {
+            background: whitesmoke;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .welcome-page .logout-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            background: rgb(103, 81, 81);
+            margin: 0;
+        }
+
+        /* Add responsive styles */
+        @media screen and (min-width: 768px) {
+            .welcome-page {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .sidebar {
+                width: 30%;
+                margin-bottom: 0;
+                margin-right: 20px;
+            }
+
+            .content {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <div class="welcome-page">
+        <div class="sidebar">
+            <h2 id="welcome-message"></h2>
+            <ul>
+                <li><a href="#wallet-overview">E-Wallet Overview</a></li>
+                <li><a href="#credit-card-link">Link Credit Card</a></li>
+                <li><a href="#payment-section">Pay Bills</a></li>
+                <li><a href="#transfer-section">Transfer Money</a></li>
+                <li><a href="#investment-section">Investment Options</a></li>
+            </ul>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <div class="content">
+            <h1>Welcome to Your E-Wallet</h1>
+
+            <div class="wallet-overview" id="wallet-overview">
+                <h2>E-Wallet Overview</h2>
+                <p>Your current balance: $1525.90</p>
+                <p>Recent transactions:</p>
+                <ul>
+                    <li>-$50.00 CATHAY CINEPLEXES PTE LTD</li>
+                    <li>+$100.00 Received from Peter</li>
+                    <li>-$25.00 KOUFU PTE LTD</li>
+                </ul>
+                <button onclick="checkTransaction()">View Transaction History</button>
+            </div>
+
+            <div class="credit-card-link" id="credit-card-link">
+                <h2>Link Credit Card</h2>
+                <p>Link your credit card to your e-wallet for easy payments and top-ups.</p>
+                <button onclick="linkCreditCard()">Link Credit Card</button>
+            </div>
+
+            <div class="payment-section" id="payment-section">
+                <h2>Pay Bills</h2>
+                <p>Pay your bills securely and conveniently from your e-wallet.</p>
+                <button onclick="payBills()">Pay Bills</button>
+            </div>
+
+            <div class="transfer-section" id="transfer-section">
+                <h2>Transfer Money</h2>
+                <p>Transfer money to friends and family instantly.</p>
+                <button onclick="transferMoney()">Transfer Money</button>
+            </div>
+
+            <div class="investment-section" id="investment-section">
+                <h2>Investment Options</h2>
+                <p>Explore investment options to grow your money.</p>
+                <button onclick="viewInvestments()">View Investments</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to display the welcome message with the user's name
+        function displayWelcomeMessage() {
+            const userName = localStorage.getItem('username');
+            const welcomeMessageElement = document.getElementById('welcome-message');
+            if (userName) {
+                welcomeMessageElement.innerText = `Welcome, ${userName}`;
+            } else {
+                welcomeMessageElement.innerText = 'Welcome';
+            }
+        }
+
+        // Function to handle logout
+        function logout() {
+            // Clear the username from localStorage
+            localStorage.removeItem('username');
+            // Redirect to the login page
+            window.location.href = 'login.html';
+        }
+        function checkTransaction() {
+            window.location.href = 'transaction.html';
+        }
+        function linkCreditCard() {
+            window.location.href = 'creditcard.html';
+        }
+        function payBills(){
+            window.location.href = 'bills.html';
+        }
+        function transferMoney() {
+            window.location.href = 'transfer.html';
+        }
+        function viewInvestments() {
+            window.location.href = '404.html';
+        }
+        // Call the displayWelcomeMessage function when the page loads
+        window.onload = displayWelcomeMessage;
+    </script>
+</body>
+
+</html>

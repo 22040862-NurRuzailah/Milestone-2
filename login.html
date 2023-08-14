@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('login.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        .login-page {
+            max-width: 360px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form {
+            background: white; /*will make the background of login white */
+            max-width: 360px;
+            width: 100%;
+            padding: 30px; 
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            border-radius: 10px;
+        }
+
+        .form input {
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+            border-radius: 10px;
+            font-family: FontAwesome, "Roboto", sans-serif;
+        }
+
+        .form button {
+            font-weight: bold;
+            letter-spacing: .1em;
+            outline: 0;
+            background: #17a589;
+            width: 100%;
+            border: 0;
+            border-radius: 30px;
+            margin: 8px 0px;
+            padding: 15px;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .form button.singpass-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .form button:hover,
+        .form button:focus {
+            background: whitesmoke;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .form button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .form .message {
+            color: #808080;
+            font-size: 11px;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .form .message a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .form .register-form {
+            display: none;
+        }
+
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .container .info {
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .container .info h1 {
+            margin: 0 0 15px;
+            padding: 0;
+            font-size: 36px;
+            font-weight: 300;
+            color: #1a1a1a;
+        }
+
+        .container .info span {
+            color: #4d4d4d;
+            font-size: 12px;
+        }
+
+        .container .info span a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .container .info span .fa {
+            color: #EF3B3A;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-page">
+        <div class="form">
+            <form id="loginForm" onsubmit="submitForm(event)">
+                <img src="C:\Users\22040862\Desktop\22040862-NurRuzailah-C369-5D-E63C-A-GA\Milestone 2\Logo.png"
+                    background="transparent"></img>
+                <input type="text" id="username" placeholder="Username or Email" />
+                <input type="password" id="password" placeholder="Password" />
+                <i class="fas fa-eye" onclick="togglePasswordVisibility()"></i>
+                <br>
+                <br>
+                <button type="submit">LOGIN</button>
+                <p id="validationMessage" class="message"></p>
+            </form>
+
+            <form class="login-form">
+                <button type="button" onclick="window.location.href='signup.html'">SIGN UP</button>
+                <button type="button" class="singpass-btn" onclick="signupWithSingpass()">Login with Singpass</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var password = document.getElementById("password");
+            var icon = document.querySelector(".fas");
+
+            // Toggle password visibility
+            password.type = password.type === "password" ? "text" : "password";
+        }
+
+        function signupWithSingpass() {
+            window.location.href = 'https://www.singpass.gov.sg/home/ui/login';
+            alert("Redirecting to Singpass....");
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const validationMessage = document.getElementById("validationMessage");
+
+            if (username.trim() === "" && password.trim() === "") {
+                validationMessage.textContent = "Username and password cannot be empty";
+                return; //will be shown when no username and password is being input
+            } else if (username.trim() === "") {
+                validationMessage.textContent = "Username cannot be empty";
+                return; //will be shown when no username being input
+            } else if (password.trim() === "") {
+                validationMessage.textContent = "Password cannot be empty";
+                return; //will be shown when no password being input
+            }
+
+            //if user bypass validation rule, will login
+            localStorage.setItem('username', username);
+            window.location.href = 'loggedin.html';
+        }
+
+    </script>
+</body>
+
+</html>

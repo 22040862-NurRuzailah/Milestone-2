@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>About Us</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <style>
+        /* styles */
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", Helvetica, Arial, sans-serif;
+        }
+
+        p {
+            line-height: 1.55;
+            color: #333;
+            font-size: 16px;
+            font-family: "Raleway", Helvetica, Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 62px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 65px;
+        }
+
+        h3 {
+            font-size: 24px;
+        }
+
+        h4 {
+            font-size: 18px;
+        }
+        section {
+            padding: 85px 0;
+        }
+
+        .card {
+            position: relative;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        a:hover {
+            text-decoration: none !important;
+        }
+
+        .scrolltop {
+            display: none;
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #199EB8;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .scrolltop:hover, .scrolltop:active, .scrolltop:focus {
+            color: #fff !important;
+            opacity: .75;
+        }
+
+        /* Hero Styling */
+        .hero {
+            display: table;
+            position: relative;
+            background-image: url(building.jpg);
+            background-size: cover;
+            padding: 150px 0;
+            color: #fff;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .hero:after {
+            content: '';
+            z-index: 0;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.65);
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-brand {
+            margin-bottom: 75px;
+            display: inline-block;
+        }
+
+        .hero-brand:hover {
+            opacity: .75;
+        }
+
+        .tagline {
+            font-family: "Raleway", Helvetica, Arial, sans-serif;
+            font-size: 26px;
+            margin: 45px 0 75px 0;
+            color: #fff;
+        }
+
+        /* Header Styling */
+        #header {
+            background: #199EB8;
+            height: 70px;
+        }
+
+        #header #logo {
+            margin: 14px 25px 0 0;
+        }
+
+        #header #logo h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 2px 0;
+            line-height: 1;
+            font-family: "Raleway", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        #header #logo h1 a, #header #logo h1 a:hover {
+            color: #fff;
+        }
+
+        #header #logo img {
+            padding: 0;
+            margin: 0;
+            max-height: 40px;
+        }
+
+        @media (max-width: 768px) {
+            #header {
+                height: 50px;
+            }
+            #header #logo {
+                margin: 10px 0 0 0;
+            }
+            #header #logo h1 {
+                padding: 2px 0;
+                font-size: 26px;
+            }
+            #header #logo img {
+                max-height: 30px;
+            }
+        }
+
+     /* Sidebar Styling */
+     .sidebar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #199EB8;
+            border-radius: 50%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .sidebar:hover .menu {
+            display: block;
+        }
+
+        .menu {
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: #fff;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 999;
+        }
+
+        .menu li {
+            list-style: none;
+        }
+
+        .menu a {
+            display: block;
+            color: #333;
+            padding: 12px 10px;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            background-color: #199EB8;
+            color: #fff;
+        }
+
+
+        /* Mission and Vision Styling */
+        .mission-vision {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .mission-vision h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .mission-vision p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Testimonials Styling */
+        .testimonial {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .testimonial h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .testimonial .quote {
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .testimonial .author {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Additional styles for mobile */
+        @media (max-width: 768px) {
+            #header {
+                height: 50px;
+            }
+
+            #header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar Container -->
+    <div class="sidebar-container">
+        <!-- Sidebar -->
+        <div class="sidebar" onclick="toggleMenu(event)">
+        <ul class="menu">
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="login.html">Login/Sign Up</a></li>
+        </ul>
+        <div class="menu-icon">&#9776;</div>
+    </div>
+
+
+    <!-- Page Content -->
+    <section class="hero">
+        <div class="container">
+            <a class="hero-brand" href="about.html" title="about us">
+                <img alt="EasyPay Logo" src="C:\Users\22040862\Desktop\22040862-NurRuzailah-C369-5D-E63C-A-GA\Milestone 2\logo.png" style="max-height: 300px;">
+            </a>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>About EasyPay</h1>
+                    <p class="tagline">
+                        EasyPay is a secure and reliable e-wallet platform for seamless financial management, payments, transfers, and transactions.
+                        Experience the freedom and convenience at your own fingertips.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Vision Section -->
+    <section class="mission-vision text-center">
+        <div class="container">
+            <h2>Mission and Vision</h2>
+            <p><strong>Mission:</strong> By offering a safe, intuitive, and cutting-edge e-wallet platform that enables simple transactions, money transfers, and quick access to digital financial services, we want to improve and simplify the way individuals manage their finances.</p>
+            <p><strong>Vision:</strong> To develop into the world's leading and most dependable e-wallet platform, enabling individuals to easily achieve their financial goals and making a beneficial contribution to a society where everyone has access to digital technology.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonial text-center">
+        <div class="container">
+            <h2>Testimonials</h2>
+            <div class="testimonial-box">
+                <div class="quote">"EasyPay has changed the game! It is amazing and most importantly secure!"</div>
+                <div class="author">- Mr Tan </div>
+            </div>
+            <div class="testimonial-box">
+                <div class="quote">"So convenience and easy to use! I love EasyPay!"</div>
+                <div class="author">- Mdm Nurul </div>
+            </div>
+            <div class="testimonial-box">
+                <div class="quote">"EasyPay is so convenient! It is now my favourite go-to website to manage all of my finances!"</div>
+                <div class="author">- Mrs Pooja </div>
+            </div>
+            <div class="testimonial-box">
+                <div class="quote">"I introduced it to all my family and friends, and they love it just like i do!"</div>
+                <div class="author">- Ms Mariah </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script to handle menu toggle -->
+    <script>
+        function toggleMenu(event) {
+            const menu = document.querySelector(".menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+            event.stopPropagation();
+        }
+
+        // Close the menu if the user clicks outside of it
+        document.addEventListener("click", function (event) {
+            const menu = document.querySelector(".menu");
+            if (menu.style.display === "block" && !menu.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Our Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service {
+      width: 300px;
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .service:hover {
+      transform: scale(1.05);
+    }
+
+    .service-icon {
+      font-size: 48px;
+      color: blue;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .service-description {
+      color: #666;
+    }
+
+    .merchants {
+      color: red;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: #199EB8;
+      border-radius: 50%;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .sidebar:hover .menu {
+      display: block;
+    }
+
+    .menu {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      background-color: #fff;
+      display: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 999;
+    }
+
+    .menu li {
+      list-style: none;
+    }
+
+    .menu a {
+      display: block;
+      color: #333;
+      padding: 12px 10px;
+      text-decoration: none;
+    }
+
+    .menu a:hover {
+      background-color: #199EB8;
+      color: #fff;
+    }
+    .signup-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+        .signup-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #17a589;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+        .signup-button:hover {
+        background-color: #13806b;
+}
+    
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar-container">
+    <div class="sidebar" onclick="toggleMenu(event)">
+      <div class="menu-icon">&#9776;</div>
+      <ul class="menu">
+        <li><a href="HomePage.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html">Login/Sign Up</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header>
+    <h1>Our Services</h1>
+  </header>
+
+  <!--creating a division and container to create a box to add in services -->
+  <!-- fas fa is a prefix for Font Awesome icon library, used for icons -->
+<div class="container">
+
+  <div class="service">
+    <i class="fas fa-clipboard-check service-icon"></i>
+    <h2 class="service-title">Mobile Payments</h2>
+    <p class="service-description">Quick and safe payments using your mobile devices. Simply link your credit card to your e-wallet and pay for the services.</p>
+  </div>
+
+  <div class="service">
+    <i class="fas fa-clipboard-check service-icon"></i>
+    <h2 class="service-title">Bill Payments</h2>
+    <p class="service-description">Pay your bills and expenses directly from EasyPay. Keep track of your finance with ease.</p>
+  </div>
+
+  <div class="service">
+    <i class="fas fa-clipboard-check service-icon"></i>
+    <h2 class="service-title">Peer-To-Peer Payments</h2>
+    <p class="service-description">Transfer money to your family and friends instantly with the EasyPay's peer-to-peer payment feature. Eliminates the need for visiting ATMs.</p>
+  </div>
+
+  <div class="service">
+    <i class="fas fa-clipboard-check service-icon"></i>
+    <h2 class="service-title">Online Shopping</h2>
+    <p class="service-description">Make purchases online at your favorite stores. Enjoy cashback offers on your purchases.</p>
+  </div>
+
+  <div class="service">
+    <i class="fas fa-clipboard-check service-icon"></i>
+    <h2 class="service-title">In-Store Payments</h2>
+    <p class="service-description">Say goodbye to physical cards. Simply scan the QR code or use NFC technology for contactless payments.<span class="merchants">*Supported merchants only.</span></p>
+  </div>
+
+  <div class="service">
+    <i class="fas fa-clipboard-check service-icon"></i>
+    <h2 class="service-title">Investments</h2>
+    <p class="service-description">EasyPay offers users to open an investment account within their e-wallet. The e-wallet can be used to link to certain investment platforms.</p>
+  </div>
+
+  <div class="signup-button-container">
+    <a href="signup.html" class="signup-button">Interested? Sign Up Now!</a>
+  </div>
+</div>
+
+  <!-- Add the JavaScript code for the sidebar -->
+  <script>
+    function toggleMenu(event) {
+      const menu = document.querySelector(".menu");
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "block";
+      }
+      event.stopPropagation();
+    }
+
+    // Close the menu if the user clicks outside of the sidebar
+    document.addEventListener("click", function (event) {
+      const menu = document.querySelector(".menu");
+      if (menu.style.display === "block" && !menu.contains(event.target)) {
+        menu.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

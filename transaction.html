@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Transaction History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <style>
+        .body {
+            background-image: url(login.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .transaction-history-page {
+            width: 80%;
+            max-width: 1200px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        .transaction-history {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .transaction-history h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .transaction-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .transaction-item {
+            margin-bottom: 10px;
+            border-top: 1px solid #f2f2f2;
+            padding-top: 10px;
+        }
+
+        .transaction-item:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .transaction-item .date {
+            font-size: 14px;
+            color: #808080;
+        }
+
+        .transaction-item .amount {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .transaction-item .category {
+            font-size: 14px;
+            color: #17a589;
+        }
+
+        .horizontal-section {
+            height: 2px;
+            background-color: #f2f2f2;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            font-family: "Titillium Web", sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: .1em;
+            outline: 0;
+            background: #17a589;
+            border: 0;
+            border-radius: 30px;
+            padding: 15px 30px;
+            color: #FFFFFF;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .back-btn:hover,
+        .back-btn:focus {
+            background: whitesmoke;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .back-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            background: rgb(103, 81, 81);
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <div class="transaction-history-page">
+        <div class="transaction-history">
+            <h2>Transaction History</h2>
+            <ul class="transaction-list">
+                <li class="transaction-item">
+                    <span class="date">2023-08-05</span>
+                    <span class="amount">-$50.00</span>
+                    <span class="category">CATHAY CINEPLEXES PTE LTD</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-08-04</span>
+                    <span class="amount">+$100.00</span>
+                    <span class="category">Received from Peter</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-08-03</span>
+                    <span class="amount">-$25.00</span>
+                    <span class="category">KOUFU PTE LTD</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-08-02</span>
+                    <span class="amount">-$30.00</span>
+                    <span class="category">SHOPEE SINGAPORE</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-08-01</span>
+                    <span class="amount">+$2000.00</span>
+                    <span class="category">Received from RP Inc.</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-08-02</span>
+                    <span class="amount">-$30.00</span>
+                    <span class="category">SWEE SWEE BAKERY</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-08-02</span>
+                    <span class="amount">+$2.50</span>
+                    <span class="category">Received from Adam</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-07-30</span>
+                    <span class="amount">-$29.50</span>
+                    <span class="category">VIBES CAFE PTE LTD</span>
+                </li>
+                <hr class="horizontal-section">
+                <li class="transaction-item">
+                    <span class="date">2023-07-30</span>
+                    <span class="amount">-$4.00</span>
+                    <span class="category">LEEHOO BUBBLE TEA</span>
+                </li>
+            </ul>
+        </div>
+        <button class="back-btn" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        // Function to go back to the previous page (logged.html)
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

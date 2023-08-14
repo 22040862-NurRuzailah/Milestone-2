@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Transfer Money</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <style>
+        body {
+            background-image: url('login.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Added rule */
+            font-family: "Titillium Web", sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .transfer-form {
+            max-width: 70%;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .transfer-form h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .transfer-btn {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: #17a589;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .alert-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .alert-popup.show {
+            display: block;
+        }
+
+        .alert-popup i {
+            color: #17a589;
+            font-size: 48px;
+            display: block;
+            text-align: center;
+        }
+
+        .alert-popup p {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .back-btn {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: #17a589;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .screen-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .otp-popup {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .otp-popup p {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .otp-popup input {
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .otp-popup button {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: #17a589;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 30%;
+        }
+
+        /* Media Queries */
+        @media only screen and (max-width: 768px) {
+            .transfer-form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transfer-form">
+        <h2>Transfer Money</h2>
+        <form id="transferForm">
+            <div class="form-group">
+                <label for="recipientMobile">Recipient Mobile Number</label>
+                <input type="tel" id="recipientMobile" name="recipientMobile"
+                    placeholder="Enter recipient mobile number" required>
+                <div class="error-message" id="recipientMobileError"></div>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount to transfer" required>
+                <div class="error-message" id="amountError"></div>
+            </div>
+            <div class="form-group">
+                <label for="bankAccount">Notes</label>
+                <input type="text" id="bankAccount" name="bankAccount" placeholder="Enter notes (optional)">
+                <div class="error-message" id="bankAccountError"></div>
+            </div>
+            <button class="transfer-btn" type="button" onclick="showOtpPopup()">Transfer Money</button>
+            <button class="back-btn" onclick="goBack()">Back</button>
+        </form>
+    </div>
+
+    <div class="screen-popup" id="otpPopupContainer">
+        <div class="otp-popup">
+            <div id="otpMessage">AN OTP WAS SENT TO YOUR REGISTERED MOBILE NUMBER</div>
+            <input type="text" id="otpInput" placeholder="Enter OTP">
+            <button class="confirm-otp-btn" onclick="submitOTP()">Confirm</button>
+        </div>
+    </div>
+
+    <div class="alert-popup" id="successPopup">
+        <i class="fas fa-check-circle"></i>
+        <p>Transaction successful! An e-advice will be sent to your email.</p>
+    </div>
+
+    <script>
+        let totalTransactions = 0; // To keep track of total transactions for the day
+        const dailyTransactionLimit = 1000; // Set the daily transaction limit to $1000
+
+        function showOtpPopup() {
+            const isValid = validateTransferForm();
+            if (isValid) {
+                const otpPopupContainer = document.getElementById('otpPopupContainer');
+                otpPopupContainer.style.display = 'flex';
+            }
+        }
+
+        function hideOtpPopup() {
+            const otpPopupContainer = document.getElementById('otpPopupContainer');
+            otpPopupContainer.style.display = 'none';
+        }
+
+        function validateTransferForm() {
+            const recipientMobile = document.getElementById('recipientMobile').value.trim();
+            const amount = parseFloat(document.getElementById('amount').value.trim());
+            const bankAccount = document.getElementById('bankAccount').value.trim();
+
+            let isValid = true;
+
+            // Simple checks for each input field
+            const mobileNumberPattern = /^\d{8}$/;
+            if (!mobileNumberPattern.test(recipientMobile)) {
+                document.getElementById('recipientMobileError').innerText = 'Invalid mobile number';
+                isValid = false;
+            } else {
+                document.getElementById('recipientMobileError').innerText = '';
+            }
+
+            // to create validation rule where user cannot exceed $1000 transfer amount, prevent AML
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById('amountError').innerText = 'Invalid amount';
+                isValid = false;
+            } else if (amount > dailyTransactionLimit - totalTransactions) {
+                document.getElementById('amountError').innerText = `Exceeds daily transaction limit. You can only transfer up to $${dailyTransactionLimit - totalTransactions} per day.`;
+                isValid = false;
+            } else {
+                document.getElementById('amountError').innerText = '';
+            }
+            return isValid;
+        }
+
+        function submitOTP() {
+            const enteredOTP = document.getElementById('otpInput').value.trim();
+            const otpPattern = /^\d{6}$/; // Regex pattern for a six-digit number
+
+            if (otpPattern.test(enteredOTP)) {
+                // If the OTP is valid, hide the OTP popup and show success popup
+                hideOtpPopup();
+                showSuccessPopup();
+
+                // Update totalTransactions after a successful transfer
+                const amount = parseFloat(document.getElementById('amount').value.trim());
+                totalTransactions += amount;
+            } else {
+                alert('Invalid OTP. Please enter a six-digit number.');
+            }
+        }
+
+        function showSuccessPopup() {
+            const successPopup = document.getElementById('successPopup');
+            successPopup.classList.add('show');
+            setTimeout(function () {
+                successPopup.classList.remove('show');
+            }, 2000);
+        }
+
+        function goBack() {
+            window.location.href = "loggedin.html";
+        }
+    </script>
+</body>
+
+</html>
